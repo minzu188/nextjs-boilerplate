@@ -1,181 +1,173 @@
 'use client';
  import React, { useState } from 'react';
- import { User, Lock, Home, CreditCard, RefreshCw } from 'lucide-react';
- export default function Toto80App() {
-   const [page, setPage] = useState('home'); // home, login, deposit, withdraw, slot, casino
-   const [menuOpen, setMenuOpen] = useState(false);
+ export default function App() {
+   const [halaman, setHalaman] = useState('home');
+   // ===== STYLE GLOBAL =====
+   const style = {
+     container: "min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white",
+     btnGreen: "bg-green-700 hover:bg-green-600 py-3 rounded-lg font-bold",
+     btnBlue: "bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-lg font-bold",
+     card: "border-2 border-red-700 rounded-lg overflow-hidden",
+   };
    // ===== HALAMAN LOGIN =====
-   if (page === 'login') {
+   if (halaman === 'login') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white flex items-center justify-center p-4">
+       <div className={`${style.container} flex items-center justify-center p-4`}>
          <div className="w-full max-w-md">
-           <div className="text-center mb-8">
-             <h1 className="text-5xl font-bold">
-               <span className="text-white">TOTO</span>
-               <span className="text-red-500">80</span>
-             </h1>
-           </div>
-           <div className="bg-black/50 rounded-2xl p-6 border border-red-700">
-             <h2 className="text-2xl font-bold text-center mb-6">Silahkan Login</h2>
-             <div className="mb-4">
-               <div className="relative">
-                 <User className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-400" size={24} />
-                 <input type="text" placeholder="Username" className="w-full pl-14 pr-4 py-4 rounded-full bg-white text-gray-800" />
-               </div>
-             </div>
-             <div className="mb-6">
-               <div className="relative">
-                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-400" size={24} />
-                 <input type="password" placeholder="Password" className="w-full pl-14 pr-4 py-4 rounded-full bg-white text-gray-800" />
-               </div>
-             </div>
-             <div className="space-y-3">
-               <button onClick={() => setPage('home')} className="w-full py-4 rounded-full bg-white text-black font-bold text-xl">Log in</button>
-               <button className="w-full py-4 rounded-full bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-xl">Daftar</button>
-             </div>
+           <h1 className="text-5xl font-bold text-center mb-8">
+             <span className="text-white">TOTO</span><span className="text-red-500">80</span>
+           </h1>
+           <div className="bg-black/50 p-6 rounded-xl border border-red-700">
+             <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+             <input 
+               type="text" 
+               placeholder="Username"
+               className="w-full p-4 rounded-full mb-4 text-black" 
+             />
+             <input 
+               type="password" 
+               placeholder="Password"
+               className="w-full p-4 rounded-full mb-6 text-black" 
+             />
+             <button 
+               onClick={() => setHalaman('home')}
+               className="w-full p-4 rounded-full bg-white text-black font-bold text-xl mb-2"
+             >
+               LOG IN
+             </button>
+             <button className="w-full p-4 rounded-full bg-red-700 text-white font-bold text-xl">
+               DAFTAR
+             </button>
            </div>
          </div>
        </div>
      );
    }
    // ===== HALAMAN DEPOSIT =====
-   if (page === 'deposit') {
+   if (halaman === 'deposit') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white">
-         <header className="bg-black/80 p-4">
-           <div className="flex items-center justify-between">
-             <button onClick={() => setPage('home')} className="text-2xl">←</button>
-             <h1 className="text-2xl font-bold">Kasir</h1>
-             <div></div>
-           </div>
+       <div className={style.container}>
+         <header className="bg-black/80 p-4 flex items-center">
+           <button onClick={() => setHalaman('home')} className="text-2xl mr-4">←</button>
+           <h1 className="text-xl font-bold">KASIR</h1>
          </header>
-         <main className="p-4">
-           <div className="grid grid-cols-2 gap-4 mb-6">
-             <button className="bg-blue-800 py-3 rounded-lg font-bold">🏦 Bank</button>
-             <button className="bg-blue-800 py-3 rounded-lg font-bold">📱 QRIS</button>
+         <div className="p-4">
+           <div className="bg-black/50 p-4 rounded-lg mb-4">
+             <p className="mb-2">Bank: <strong>GOPAY</strong></p>
+             <p className="mb-2">Nama: <strong>ALVIN</strong></p>
+             <p>No Rek: <strong>0822xxxxxx</strong></p>
            </div>
-           <div className="bg-black/50 rounded-lg p-4 mb-6 border border-red-700">
-             <p className="mb-2"><span className="text-gray-400">Bank:</span> <span className="font-bold">GoPay</span></p>
-             <p className="mb-2"><span className="text-gray-400">Nama:</span> <span className="font-bold">Alvin</span></p>
-           </div>
-           <div className="bg-black/50 rounded-lg p-6 border border-red-700">
-             <input type="number" placeholder="Masukkan Nominal" className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 mb-4" />
-             <button className="w-full py-4 rounded-lg bg-blue-600 font-bold text-xl">Konfirmasi</button>
-           </div>
-         </main>
+           <input 
+             type="number" 
+             placeholder="Masukkan Nominal"
+             className="w-full p-4 rounded-lg bg-gray-800 border border-gray-700 mb-4" 
+           />
+           <button className="w-full p-4 rounded-lg bg-blue-600 font-bold">KONFIRMASI</button>
+         </div>
        </div>
      );
    }
    // ===== HALAMAN WITHDRAW =====
-   if (page === 'withdraw') {
+   if (halaman === 'withdraw') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white">
-         <header className="bg-black/80 p-4">
-           <div className="flex items-center justify-between">
-             <button onClick={() => setPage('home')} className="text-2xl">←</button>
-             <h1 className="text-2xl font-bold">Menarik</h1>
-             <div></div>
-           </div>
+       <div className={style.container}>
+         <header className="bg-black/80 p-4 flex items-center">
+           <button onClick={() => setHalaman('home')} className="text-2xl mr-4">←</button>
+           <h1 className="text-xl font-bold">MENARIK</h1>
          </header>
-         <main className="p-4">
-           <div className="bg-black/50 rounded-lg p-6 border border-red-700">
-             <input type="number" placeholder="Jumlah Penarikan" className="w-full px-4 py-3 rounded-lg bg-white text-black mb-4" />
-             <input type="password" placeholder="Password" className="w-full px-4 py-3 rounded-lg bg-white text-black mb-6" />
-             <button className="w-full py-4 rounded-lg bg-cyan-600 font-bold text-xl">Kirim</button>
+         <div className="p-4">
+           <div className="bg-black/50 p-6 rounded-lg">
+             <input 
+               type="number" 
+               placeholder="Jumlah Penarikan"
+               className="w-full p-4 rounded-lg mb-4 text-black" 
+             />
+             <input 
+               type="password" 
+               placeholder="Password"
+               className="w-full p-4 rounded-lg mb-6 text-black" 
+             />
+             <button className="w-full p-4 rounded-lg bg-cyan-600 font-bold">KIRIM</button>
            </div>
-         </main>
+         </div>
        </div>
      );
    }
    // ===== HALAMAN SLOT =====
-   if (page === 'slot') {
+   if (halaman === 'slot') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white">
-         <header className="bg-black/80 p-4">
-           <div className="flex items-center justify-between">
-             <button onClick={() => setPage('home')} className="text-2xl">←</button>
-             <h1 className="text-2xl font-bold">PERMAINAN SLOT</h1>
-             <button className="bg-teal-600 px-4 py-1 rounded">LOBI</button>
-           </div>
+       <div className={style.container}>
+         <header className="bg-black/80 p-4 flex items-center justify-between">
+           <button onClick={() => setHalaman('home')} className="text-2xl">←</button>
+           <h1 className="text-xl font-bold">SLOT</h1>
+           <div></div>
          </header>
-         <main className="p-4 grid grid-cols-2 gap-4">
-           <div className="bg-gradient-to-r from-green-600 to-green-800 rounded-lg border-2 border-red-700 h-32 flex items-center justify-center"><h3 className="text-xl font-bold">IDN SLOT</h3></div>
-           <div className="bg-gradient-to-r from-yellow-600 to-yellow-800 rounded-lg border-2 border-red-700 h-32 flex items-center justify-center"><h3 className="text-xl font-bold">PRAGMATIC</h3></div>
-           <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-lg border-2 border-red-700 h-32 flex items-center justify-center"><h3 className="text-xl font-bold">PG SOFT</h3></div>
-           <div className="bg-gradient-to-r from-red-700 to-red-900 rounded-lg border-2 border-red-700 h-32 flex items-center justify-center"><h3 className="text-xl font-bold">HABANERO</h3></div>
-         </main>
+         <div className="p-4 grid grid-cols-2 gap-4">
+           <div className="bg-gradient-to-r from-green-600 to-green-800 h-32 flex items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">IDN SLOT</div>
+           <div className="bg-gradient-to-r from-yellow-600 to-yellow-800 h-32 flex items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">PRAGMATIC</div>
+           <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 h-32 flex items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">PG SOFT</div>
+           <div className="bg-gradient-to-r from-red-700 to-red-900 h-32 flex items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">HABANERO</div>
+         </div>
        </div>
      );
    }
    // ===== HALAMAN CASINO =====
-   if (page === 'casino') {
+   if (halaman === 'casino') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white">
-         <header className="bg-black/80 p-4">
-           <div className="flex items-center justify-between">
-             <button onClick={() => setPage('home')} className="text-2xl">←</button>
-             <h1 className="text-2xl font-bold">PERMAINAN CASINO</h1>
-             <button className="bg-teal-600 px-4 py-1 rounded">LOBI</button>
-           </div>
+       <div className={style.container}>
+         <header className="bg-black/80 p-4 flex items-center justify-between">
+           <button onClick={() => setHalaman('home')} className="text-2xl">←</button>
+           <h1 className="text-xl font-bold">CASINO</h1>
+           <div></div>
          </header>
-         <main className="p-4 grid grid-cols-2 gap-4">
-           <div className="bg-gradient-to-r from-green-700 to-green-900 rounded-lg border-2 border-red-700 h-36 flex flex-col items-center justify-center"><span className="text-5xl mb-2">🎡</span><h3 className="text-xl font-bold">ROULETTE</h3></div>
-           <div className="bg-gradient-to-r from-blue-700 to-blue-900 rounded-lg border-2 border-red-700 h-36 flex flex-col items-center justify-center"><span className="text-5xl mb-2">🃏</span><h3 className="text-xl font-bold">BACCARAT</h3></div>
-           <div className="bg-gradient-to-r from-purple-700 to-purple-900 rounded-lg border-2 border-red-700 h-36 flex flex-col items-center justify-center"><span className="text-5xl mb-2">♠️</span><h3 className="text-xl font-bold">BLACKJACK</h3></div>
-           <div className="bg-gradient-to-r from-red-700 to-red-900 rounded-lg border-2 border-red-700 h-36 flex flex-col items-center justify-center"><span className="text-5xl mb-2">🎲</span><h3 className="text-xl font-bold">SICBO</h3></div>
-         </main>
+         <div className="p-4 grid grid-cols-2 gap-4">
+           <div className="bg-gradient-to-r from-green-700 to-green-900 h-32 flex flex-col items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">🎡 ROULETTE</div>
+           <div className="bg-gradient-to-r from-blue-700 to-blue-900 h-32 flex flex-col items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">🃏 BACCARAT</div>
+           <div className="bg-gradient-to-r from-purple-700 to-purple-900 h-32 flex flex-col items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">♠️ BLACKJACK</div>
+           <div className="bg-gradient-to-r from-red-700 to-red-900 h-32 flex flex-col items-center justify-center font-bold text-xl rounded-lg border-2 border-red-700">🎲 SICBO</div>
+         </div>
        </div>
      );
    }
-   // ===== HALAMAN UTAMA =====
+   // ===== HALAMAN HOME / UTAMA =====
    return (
-     <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-black text-white">
+     <div className={style.container}>
        <header className="bg-black/80 p-4">
-         <div className="flex items-center justify-between">
-           <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-           </button>
-           <div className="text-3xl font-bold"><span className="text-white">TOTO</span><span className="text-red-500">80</span></div>
-           <button onClick={() => setPage('deposit')} className="bg-blue-700 px-4 py-2 rounded-lg font-bold">DEPOSITO</button>
+         <div className="flex items-center justify-between mb-3">
+           <span className="text-3xl font-bold"><span className="text-white">TOTO</span><span className="text-red-500">80</span></span>
+           <button onClick={() => setHalaman('deposit')} className={style.btnBlue}>DEPOSIT</button>
          </div>
-         <div className="mt-3 flex justify-between items-center">
+         <div className="flex justify-between text-sm">
            <span>Saldo: <span className="text-yellow-400 font-bold">IDR. 101</span></span>
-           <button className="bg-blue-700/50 px-3 py-1 rounded flex items-center gap-2"><RefreshCw size={16} /> Refresh</button>
+           <button onClick={() => setHalaman('login')} className="bg-red-700 px-3 py-1 rounded">LOGOUT</button>
          </div>
        </header>
-       {/* MENU SIDEBAR */}
-       {menuOpen && (
-         <div className="fixed inset-0 bg-black/80 z-40" onClick={() => setMenuOpen(false)}>
-           <div className="absolute left-0 top-0 h-full w-72 bg-gradient-to-b from-red-900 to-black p-4" onClick={e=>e.stopPropagation()}>
-             <button onClick={() => setMenuOpen(false)} className="absolute right-4 top-4 text-xl">✕</button>
-             <div className="mt-12 space-y-2">
-               <button onClick={()=>{setPage('home');setMenuOpen(false)}} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-700"><Home size={20}/> Home</button>
-               <button onClick={()=>{setPage('deposit');setMenuOpen(false)}} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-red-800"><CreditCard size={20}/> Deposit</button>
-               <button onClick={()=>{setPage('withdraw');setMenuOpen(false)}} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-red-800"><CreditCard size={20}/> Withdraw</button>
-               <button onClick={()=>{setPage('login');setMenuOpen(false)}} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-red-800"><Lock size={20}/> Logout</button>
-             </div>
-           </div>
-         </div>
-       )}
        <main className="p-4">
-         {/* KATEGORI */}
-         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-           <button className="bg-green-700 py-4 rounded-lg font-bold">SEMUA</button>
-           <button onClick={() => setPage('casino')} className="bg-green-700 py-4 rounded-lg font-bold">KASINO</button>
-           <button className="bg-green-700 py-4 rounded-lg font-bold">TOGEL</button>
-           <button onClick={() => setPage('slot')} className="bg-green-700 py-4 rounded-lg font-bold">SLOT</button>
+         {/* MENU KATEGORI */}
+         <div className="grid grid-cols-2 gap-3 mb-6">
+           <button className={style.btnGreen} onClick={() => setHalaman('casino')}>KASINO</button>
+           <button className={style.btnGreen}>TOGEL</button>
+           <button className={style.btnGreen} onClick={() => setHalaman('slot')}>SLOT</button>
+           <button className={style.btnGreen}>POKER</button>
          </div>
          {/* LIVE RESULT */}
-         <h2 className="text-xl font-bold mb-4 bg-blue-900 py-2 px-4 rounded-t-lg">TOGEL 4D</h2>
-         <div className="grid grid-cols-2 gap-4 mb-8">
-           <div className="bg-gradient-to-br from-blue-600 to-blue-900 rounded-lg border-2 border-red-700 p-4">
-             <h3 className="text-lg font-bold mb-2">SYDNEY</h3>
-             <div className="bg-black/50 rounded p-3 text-3xl font-bold text-yellow-400">9089</div>
+         <h2 className="bg-blue-900 p-2 font-bold rounded-t-lg">LIVE RESULT</h2>
+         <div className="grid grid-cols-2 gap-4 mb-6">
+           <div className="bg-gradient-to-br from-blue-600 to-blue-900 p-4 rounded-lg border-2 border-red-700">
+             <h3 className="font-bold mb-2">SYDNEY</h3>
+             <div className="text-3xl font-bold text-yellow-400">9089</div>
            </div>
-           <div className="bg-gradient-to-br from-purple-700 to-red-800 rounded-lg border-2 border-red-700 p-4">
-             <h3 className="text-lg font-bold mb-2">HONGKONG</h3>
-             <div className="bg-black/50 rounded p-3 text-3xl font-bold text-yellow-400">4288</div>
+           <div className="bg-gradient-to-br from-purple-700 to-red-800 p-4 rounded-lg border-2 border-red-700">
+             <h3 className="font-bold mb-2">HONGKONG</h3>
+             <div className="text-3xl font-bold text-yellow-400">4288</div>
            </div>
+         </div>
+         {/* MENU LAINNYA */}
+         <div className="grid grid-cols-2 gap-3">
+           <button onClick={() => setHalaman('deposit')} className="bg-gray-800 p-4 rounded-lg">💳 DEPOSIT</button>
+           <button onClick={() => setHalaman('withdraw')} className="bg-gray-800 p-4 rounded-lg">💵 WITHDRAW</button>
+           <button className="bg-gray-800 p-4 rounded-lg">📜 HISTORY</button>
+           <button className="bg-gray-800 p-4 rounded-lg">👥 REFERAL</button>
          </div>
        </main>
      </div>
