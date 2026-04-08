@@ -7,7 +7,7 @@
    const [gameActive, setGameActive] = useState(false);
    const [resultText, setResultText] = useState('');
    const [betAmount, setBetAmount] = useState(10000);
-   const [selectedProvider, setSelectedProvider] = useState(''); // Untuk PG / Pragmatic
+   const [selectedProvider, setSelectedProvider] = useState('');
    // ===== SOUND EFFECT =====
    const playSound = (type) => {
      try {
@@ -73,7 +73,7 @@
    // ===== HALAMAN PILIH PROVIDER =====
    if(page === 'pilihProvider') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black text-white">
+       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-95 to-black text-white">
          <header className="bg-slate-900 p-4 flex items-center">
            <button onClick={() => setPage('home')} className="text-2xl mr-4">←</button>
            <h1 className="text-xl font-bold">PILIH PROVIDER</h1>
@@ -81,14 +81,12 @@
          
          <div className="p-4 grid grid-cols-1 gap-4 max-w-md mx-auto">
            
-           {/* PRAGMATIC PLAY */}
            <div onClick={() => { setSelectedProvider('pragmatic'); setPage('slot'); }} 
                 className="bg-gradient-to-r from-orange-600 to-orange-800 p-6 rounded-2xl border-2 border-yellow-400 shadow-lg text-center cursor-pointer hover:scale-105 transition-transform">
              <h2 className="text-3xl font-black text-white mb-2">PRAGMATIC PLAY</h2>
              <p className="text-sm opacity-80">Game Paling Gacor & Populer</p>
              <div className="mt-3 flex justify-center gap-2 text-2xl">🎰 🎲 🃏</div>
            </div>
-           {/* PG SOFT */}
            <div onClick={() => { setSelectedProvider('pgsoft'); setPage('slot'); }} 
                 className="bg-gradient-to-r from-green-600 to-green-800 p-6 rounded-2xl border-2 border-yellow-400 shadow-lg text-center cursor-pointer hover:scale-105 transition-transform">
              <h2 className="text-3xl font-black text-white mb-2">PG SOFT</h2>
@@ -102,7 +100,7 @@
    // ===== HALAMAN SLOT =====
    if(page === 'slot') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black text-white">
+       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-95 to-black text-white">
          <header className="bg-slate-900 p-4 flex items-center justify-between">
            <button onClick={() => setPage('pilihProvider')} className="text-2xl">←</button>
            <h1 className="text-xl font-bold">{selectedProvider === 'pgsoft' ? 'PG SOFT' : 'PRAGMATIC PLAY'}</h1>
@@ -115,9 +113,9 @@
                <h2 className="text-yellow-400 font-bold mb-4 text-2xl">{selectedProvider === 'pgsoft' ? 'MEGA WIN' : 'LUCKY SLOT'}</h2>
                
                <div className="flex justify-center gap-4 mb-6">
-                 <div id="slot1" className="w-20 h-20 bg-white text-black text-5xl flex items-center justify-center rounded-lg font-bold">🍒</div>
-                 <div id="slot2" className="w-20 h-20 bg-white text-black text-5xl flex items-center justify-center rounded-lg font-bold">🍋</div>
-                 <div id="slot3" className="w-20 h-20 bg-white text-black text-5xl flex items-center justify-center rounded-lg font-bold">🔔</div>
+                 <div id="slot1" className="w-20 h-20 bg-white text-black text-5xl flex items-center justify-center rounded-lg font-bold shadow-lg">🍒</div>
+                 <div id="slot2" className="w-20 h-20 bg-white text-black text-5xl flex items-center justify-center rounded-lg shadow-lg">🍋</div>
+                 <div id="slot3" className="w-20 h-20 bg-white text-black text-5xl flex items-center justify-center rounded-lg shadow-lg">🔔</div>
                </div>
                <p className="text-lg font-bold mb-4 h-6 text-yellow-300">{resultText}</p>
                <div className="mb-4">
@@ -140,7 +138,7 @@
    // ===== HALAMAN CASINO =====
    if(page === 'casino') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black text-white">
+       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-95 to-black text-white">
          <header className="bg-slate-900 p-4 flex items-center justify-between">
            <button onClick={() => setPage('home')} className="text-2xl">←</button>
            <h1 className="text-xl font-bold">LIVE CASINO</h1>
@@ -166,9 +164,6 @@
                <button onClick={() => playBaccarat('banker')} className="bg-gradient-to-r from-blue-600 to-blue-700 p-3 rounded-xl font-bold">BANKER</button>
                <button onClick={() => playBaccarat('tie')} className="bg-gradient-to-r from-purple-600 to-purple-700 p-3 rounded-xl font-bold">SERI x8</button>
              </div>
-             <div className="text-center">
-               <p className="text-xs mb-2">Taruhan: {betAmount.toLocaleString()}</p>
-             </div>
            </div>
          </div>
        </div>
@@ -177,7 +172,7 @@
    // ===== HALAMAN DEPOSIT =====
    if(page === 'deposit') {
      return (
-       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black text-white">
+       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-95 to-black text-white">
          <header className="bg-slate-900 p-4 flex items-center">
            <button onClick={() => setPage('home')} className="text-2xl mr-4">←</button>
            <h1 className="text-xl font-bold">TOP UP SALDO</h1>
@@ -202,4 +197,13 @@
                <button onClick={() => document.getElementById('nominalDeposit').value=100000} className="bg-slate-700 p-2 rounded text-sm">100rb</button>
              </div>
            </div>
-           <button onClick={prosesDeposit} className="w-full p-4
+           <button onClick={prosesDeposit} className="w-full p-4 rounded-lg bg-gradient-to-r from-green-500 to-green-700 font-bold text-lg">KONFIRMASI DEPOSIT</button>
+         </div>
+       </div>
+     );
+   }
+   // ===== HALAMAN LOGIN =====
+   if(page === 'login') {
+     return (
+       <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-95 to-black text-white">
+         <div
